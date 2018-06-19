@@ -4,7 +4,7 @@ services:
   - docker
 
 script:
-  - "docker build -t aparcar/$IMAGE ."
+  - "docker build -t aparcar/openwrt:$TAG ."
 
 deploy:
   provider: script
@@ -13,5 +13,5 @@ deploy:
     branch: master
 
 env:
-  - IMAGE="openwrt-x86_64:snapshot" ROOTFS_URL="https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-x86-64-generic-rootfs.tar.gz"
-  - IMAGE="openwrt-armvirt_64:snapshot" ROOTFS_URL="https://downloads.openwrt.org/snapshots/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz"
+  - TAG="x86-latest" ROOTFS_URL="https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-x86-64-generic-rootfs.tar.gz"
+  - TAG="arm-latest" ROOTFS_URL="https://downloads.openwrt.org/snapshots/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz"
