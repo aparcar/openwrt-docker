@@ -7,7 +7,7 @@ services:
   - docker
 
 script:
-  - "docker build -t aparcar/openwrt:$TAG ."
+  - docker build -t "aparcar/openwrt:$TAG" --build-arg "ROOTFS_URL=$ROOTFS_URL" .
 
 deploy:
   provider: script
