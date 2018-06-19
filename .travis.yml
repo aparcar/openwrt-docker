@@ -4,4 +4,10 @@ services:
   - docker
 
 script:
-  - docker build -t aparcar/openwrt-snapshot-x86_64 ./snapshots/x86/64/
+  - "docker build -t aparcar/openwrt-x86_64:snapshot ./snapshots/x86/64/"
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
