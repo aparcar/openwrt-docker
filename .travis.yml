@@ -1,0 +1,7 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker build -t aparcar/openwrt-snapshot-x86_64 ./snapshots/x86/64/
