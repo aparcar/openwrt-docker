@@ -4,10 +4,14 @@ services:
   - docker
 
 script:
-  - "docker build -t aparcar/openwrt-x86_64:snapshot ./snapshots/x86/64/"
+  - "docker build -t aparcar/$IMAGE ."
 
 deploy:
   provider: script
   script: bash docker_push
   on:
     branch: master
+
+env:
+  - IMAGE="openwrt-x86_64:snapshot" ROOTFS_URL="https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-x86-64-generic-rootfs.tar.gz"
+  - IMAGE="openwrt-armvirt_64:snapshot" ROOTFS_URL="https://downloads.openwrt.org/snapshots/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz"
