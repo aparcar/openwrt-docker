@@ -1,4 +1,5 @@
 FROM scratch
+ARG ROOTFS_URL
 
 MAINTAINER Paul Spooren <mail@aparcar.org>
 
