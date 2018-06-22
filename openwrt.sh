@@ -2,8 +2,7 @@
 
 build_image() {
     docker build -t "$DOCKER_USERNAME/openwrt:$1" --build-arg \
-        "DOCKER_USERNAME=$DOCKER_USERNAME" \
-        "TAG=$1" .
+        "DOCKER_USERNAME=$DOCKER_USERNAME TAG=$1" .
     docker push "$DOCKER_USERNAME/openwrt:$1"
 }
 
