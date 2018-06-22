@@ -6,9 +6,8 @@ X86_STABLE="releases/17.01.4/targets/x86/64/lede-17.01.4-x86-64-generic-rootfs.t
 ARM_LATEST="snapshots/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz"
 
 build_rootfs() {
-    curl -s "$BASE_URL/$2" | docker import - "$DOCKER_USERNAME/openwrt-rootfs:$2"
+    curl -s "$BASE_URL/$2" | docker import - "$DOCKER_USERNAME/openwrt-rootfs:$1"
     docker push "$DOCKER_USERNAME/openwrt-rootfs:$1"
-
 }
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
