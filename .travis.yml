@@ -7,4 +7,5 @@ services:
   - docker
 
 script:
+  - bash openwrt-rootfs.sh
   - bash openwrt.sh

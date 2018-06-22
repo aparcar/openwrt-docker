@@ -1,24 +1,17 @@
 #!/bin/bash
 
-BASE_URL="https://downloads.openwrt.org"
-X86_LATEST="snapshots/targets/x86/64/openwrt-x86-64-generic-rootfs.tar.gz"
-X86_STABLE="releases/17.01.4/targets/x86/64/lede-17.01.4-x86-64-generic-rootfs.tar.gz"
-ARM_LATEST="snapshots/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz"
-
-docker build -t "$DOCKER_USERNAME/openwrt:stable" \
-    --build-arg "ROOTFS_URL=$BASE_URL/$X86_STABLE" .
-
-docker build -t "$DOCKER_USERNAME/openwrt:latest" \
-    --build-arg "ROOTFS_URL=$BASE_URL/$X86_LATEST" .
-
-docker build -t "$DOCKER_USERNAME/openwrt:arm-latest" \
-    --build-arg "ROOTFS_URL=$BASE_URL/$ARM_LATEST" .
-
+build_image() {
+    docker build -t "$DOCKER_USERNAME/openwrt:$1" --build-arg \
+        "DOCKER_USERNAME=$DOCKER_USERNAME" \
+        "TAG=$1" .
+    docker push "$DOCKER_USERNAME/openwrt:$1"
+}
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push "$DOCKER_USERNAME/openwrt:stable"
-docker push "$DOCKER_USERNAME/openwrt:latest"
-docker push "$DOCKER_USERNAME/openwrt:arm-latest"
+
+build_image "stable"
+build_image "latest"
+build_image "arm-latest"
 
 #URLS=$(curl -s "$BASE_URL/snapshots/targets/?json" | \
 #    sed -e 's/","/\n/g' -e 's/\["//g' -e 's/"\]//g')

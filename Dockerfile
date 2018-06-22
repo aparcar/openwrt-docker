@@ -1,10 +1,8 @@
-ARG ROOTFS_URL
-
-FROM scratch
+ARG DOCKER_USERNAME
+ARG TAG
+FROM $DOCKER_USERNAME/openwrt-rootfs:$TAG
 
 MAINTAINER Paul Spooren <mail@aparcar.org>
-
-ADD $ROOTFS_URL /
 
 RUN mkdir /var/lock
 
