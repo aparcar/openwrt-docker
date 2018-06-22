@@ -7,14 +7,4 @@ services:
   - docker
 
 script:
-  - docker build -t "aparcar/openwrt:$TAG" --build-arg "ROOTFS_URL=$ROOTFS_URL" .
-
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: master
-
-env:
-  - TAG="x86-latest" ROOTFS_URL="https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-x86-64-generic-rootfs.tar.gz"
-  - TAG="arm-latest" ROOTFS_URL="https://downloads.openwrt.org/snapshots/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz"
+  - bash openwrt.sh
