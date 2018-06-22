@@ -1,6 +1,6 @@
 ARG DOCKER_USERNAME
 ARG TAG
-FROM $DOCKER_USERNAME/openwrt-rootfs:$TAG
+FROM ${DOCKER_USERNAME}/openwrt-rootfs:${TAG}
 
 MAINTAINER Paul Spooren <mail@aparcar.org>
 
