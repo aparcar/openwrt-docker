@@ -4,8 +4,7 @@ FROM ${DOCKER_USERNAME}/openwrt-rootfs:${TAG}
 
 MAINTAINER Paul Spooren <mail@aparcar.org>
 
-RUN mkdir -p /var/lock && \
-    mkdir -p /var/run
+ADD var.zip /
 
 EXPOSE 80 443 22
 
