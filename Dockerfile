@@ -4,7 +4,7 @@ FROM ${DOCKER_USERNAME}/openwrt-rootfs:${TAG}
 
 MAINTAINER Paul Spooren <mail@aparcar.org>
 
-ADD var.tar.gz /
+ADD root.tar.gz /
 
 EXPOSE 80 443 22
 
