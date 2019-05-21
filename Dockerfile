@@ -4,7 +4,7 @@ MAINTAINER Paul Spooren <mail@aparcar.org>
 
 ADD rootfs.tar.gz /
 
-ADD root/etc/config/network /etc/config/network
+ADD root/ /
 
 EXPOSE 80 443 22
 
