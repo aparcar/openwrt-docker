@@ -7,7 +7,7 @@ before_script:
   - apk update && apk add curl
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
-build:
+build-master:
   stage: build
   script:
     - curl -s "$BASE_URL/$ROOTFS_URL" -o rootfs.tar.gz
@@ -16,3 +16,17 @@ build:
   variables:
     BASE_URL: "https://downloads.openwrt.org"
     ROOTFS_URL: "snapshots/targets/x86/64/openwrt-x86-64-generic-rootfs.tar.gz"
+  only:
+    - master
+
+build:
+  stage: build
+  script:
+    - curl -s "$BASE_URL/$ROOTFS_URL" -o rootfs.tar.gz
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
+  variables:
+    BASE_URL: "https://downloads.openwrt.org"
+    ROOTFS_URL: "releases/$CI_COMMIT_REF_NAME/targets/x86/64/openwrt-$CI_COMMIT_REF_NAME-x86-64-generic-rootfs.tar.gz"
+  except:
+    - master
