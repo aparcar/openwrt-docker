@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = git@github.com:aparcar/openwrt-docker.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "fe80"]
+	url = git@code.fe80.eu:openwrt/docker.git
+	fetch = +refs/heads/*:refs/remotes/fe80/*
