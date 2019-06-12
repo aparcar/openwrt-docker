@@ -11,3 +11,5 @@ ENV HOME /home/build
 WORKDIR /home/build/imagebuilder
 
 COPY --chown=build:build ./imagebuilder /home/build/imagebuilder
+
+RUN chown build:build /home/build/imagebuilder

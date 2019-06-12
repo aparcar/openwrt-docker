@@ -1,7 +1,19 @@
 # OpenWrt Docker repository
 
-This repository contains scripts to create Docker containers for OpenWrt.  The
+This repository contains scripts to create Docker containers for OpenWrt. The
 scripts are run via an CI and upload such containers do docker.io.
+
+Used variables are `BRANCHES`, `TARGETS`, `DOCKER_USER`, `DOCKER_PASS` and `DOCKER_IMAGE`.
+
+`$BRANCHES`: space separated list of OpenWrt branches to build ("master 18.06.2 18.06.1")
+`$TARGETS`: space separated list of OpenWrt targets to build ("x86-64 ath79-generic")
+`$DOCKER_USER`: user to upload ("aparcar")
+`$DOCKER_PASS`: passwort to upload
+`$DOCKER_IMAGE`: image name ("sdk" or e.g. "openwrt-sdk")
+
+`$BRANCHES` and `$TARGETS` unite to an build matrix.
+
+See `.circleci/config.yml` for the current setup.
 
 ## `rootfs`
 
