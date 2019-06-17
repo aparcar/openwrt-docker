@@ -6,10 +6,9 @@ RUN apt-get update -qq &&\
         apt-get -y autoremove && apt-get clean
 
 RUN useradd -c "OpenWrt Builder" -m -d /home/build -s /bin/bash build
+COPY --chown=build:build ./sdk /home/build/sdk
+RUN chown build:build /home/build/sdk
+
 USER build
 ENV HOME /home/build
 WORKDIR /home/build/sdk
-
-COPY --chown=build:build ./sdk /home/build/sdk
-
-RUN chown build:build /home/build/sdk
