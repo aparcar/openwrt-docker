@@ -1,5 +1,6 @@
 #!/bin/sh
 
+TARGETS="${TARGETS:-x86-64}"
 BRANCHES="${BRANCHES:-master}"
 
 for TARGET in $TARGETS ; do
