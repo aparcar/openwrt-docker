@@ -1,7 +1,7 @@
 # OpenWrt Docker repository
 
 This repository contains scripts to create Docker containers for OpenWrt. The
-scripts are run via an CI and upload such containers do docker.io.
+scripts are run via an CI and upload such containers to docker.io.
 
 Used variables are `BRANCHES`, `TARGETS`, `DOCKER_USER`, `DOCKER_PASS` and `DOCKER_IMAGE`.
 
@@ -17,7 +17,7 @@ See `.circleci/config.yml` for the current setup.
 
 ## `rootfs`
 
-An unpackaged version of OpenWrts rootf for different architectures. The
+An unpackaged version of OpenWrt's rootfs for different architectures. The
 `./rootfs` folder requires slight modifications to work within Docker,
 additional files for the rootfs should be added there before building.
 
